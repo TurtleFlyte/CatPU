@@ -14,7 +14,7 @@ class PerformanceInfoFetcher {
     var updateTimer: Timer!
     let CPUUsageLock: NSLock = NSLock()
     
-    var coreUsagePercent: Float = 0
+    var totalCoreUsage: Float = 0
     
     init() {
         let mibKeys: [Int32] = [ CTL_HW, HW_NCPU ]
@@ -60,8 +60,8 @@ class PerformanceInfoFetcher {
                 allCoreTotal += total;
 //                print(String(format: "Core: %u Usage: %f", i, Float(inUse) / Float(total)))
             }
-            coreUsagePercent = Float(allCoreInUse) / Float(allCoreTotal) * 100
-            print(String(format: "Usage: %f",coreUsagePercent))
+            totalCoreUsage = Float(allCoreInUse) / Float(allCoreTotal) * 100
+//            print(String(format: "Usage: %f",totalCoreUsage))
 
             CPUUsageLock.unlock()
             

@@ -7,7 +7,7 @@ struct CatPUApp: App {
     var body: some Scene {
         MenuBarExtra{
             ContentView()
-                .frame(width: 175, height: 75)
+                .frame(width: 150, height: 70, alignment: .leading)
         } label: {
             AnimatedIconView()
         }

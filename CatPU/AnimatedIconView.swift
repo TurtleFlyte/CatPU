@@ -21,8 +21,8 @@ struct AnimatedIconView: View {
             .renderingMode(.template)
             .onReceive(timer) {_ in
                 frameIndex = (frameIndex + 1) % icons.count
-                if(performanceModel.coreUsagePercent != 0){
-                    timerInterval = hiSpeed+((loSpeed-hiSpeed)/100) * Double((100-(performanceModel.coreUsagePercent)))
+                if(performanceModel.totalCoreUsage != 0){
+                    timerInterval = hiSpeed+((loSpeed-hiSpeed)/100) * Double((100-(performanceModel.totalCoreUsage)))
                 }
             }
     }

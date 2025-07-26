@@ -4,23 +4,25 @@ struct ContentView: View {
     @Environment(\.performanceModel) var performanceModel
     
     var body: some View {        
-        VStack {
+        VStack (
+            alignment: .leading
+        ){
             Text(displayCPUInfo())
+                .fixedSize()
             Button(
                 "Quit CatPU"
             ){
                 NSApp.terminate(nil)
             }
         }
-        .padding(6)
+        .padding(21)
     }
     
     func displayCPUInfo() -> String{
-        if(performanceModel.coreUsagePercent.isNaN || performanceModel.coreUsagePercent.isInfinite){
-            print("zero or infinite")
+        if(performanceModel.totalCoreUsage.isNaN || performanceModel.totalCoreUsage.isInfinite){
             return "CPU Usage:          NaN%"
         }else{
-            return "CPU Usage:\t\(Int(performanceModel.coreUsagePercent))%"
+            return "CPU Usage:   \(Int(performanceModel.totalCoreUsage))%"
         }
     }
 }
