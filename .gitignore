@@ -1,0 +1,6 @@
+.build/
+
+timeline.xctimeline
+playground.xcworkspace
+
+xcuserdata/

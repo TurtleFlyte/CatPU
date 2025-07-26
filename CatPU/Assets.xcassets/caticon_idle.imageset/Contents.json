@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "caticon_basic.png",
+      "filename" : "caticon_idle.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

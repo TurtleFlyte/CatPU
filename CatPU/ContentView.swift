@@ -1,24 +1,26 @@
-//
-//  ContentView.swift
-//  CatPU
-//
-//  Created by Andrew Polkinhorn on 7/23/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+    @Environment(\.performanceModel) var performanceModel
+    
+    var body: some View {        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(displayCPUInfo())
+            Button(
+                "Quit CatPU"
+            ){
+                NSApp.terminate(nil)
+            }
         }
-        .padding()
+        .padding(6)
     }
-}
-
-#Preview {
-    ContentView()
+    
+    func displayCPUInfo() -> String{
+        if(performanceModel.coreUsagePercent.isNaN || performanceModel.coreUsagePercent.isInfinite){
+            print("zero or infinite")
+            return "CPU Usage:          NaN%"
+        }else{
+            return "CPU Usage:\t\(Int(performanceModel.coreUsagePercent))%"
+        }
+    }
 }
